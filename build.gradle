@@ -11,7 +11,7 @@ targetCompatibility = "1.8"
 repositories {
   mavenCentral()
 }
- 
+
 dependencies {
   implementation 'org.apache.logging.log4j:log4j-core:2.14.1'
   if (project.gradle.startParameter.taskNames.first().contains("shadow")) {
@@ -22,7 +22,6 @@ dependencies {
 gretty {
   contextPath = 'app'
   servletContainer = 'tomcat85'
-  host = '0.0.0.0' // Add this line to bind to all network interfaces
 }
 
 sourceSets {
@@ -41,3 +40,6 @@ jar {
     attributes('Main-Class': 'launch.Main')
   }
 }
+
+// Load custom gretty configuration
+apply from: 'grettyConfig.groovy'
